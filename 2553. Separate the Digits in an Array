@@ -1,0 +1,25 @@
+class Solution {
+    public int[] separateDigits(int[] nums) {
+        List<Integer> ls=new ArrayList<>();
+        int n = 0;
+        for(int i:nums){
+            List<Integer> temp = getDigits(i);
+            n += temp.size();
+            ls.addAll(temp);
+        }
+        int[] ans = new int[n];
+        int j = 0;
+        for(int i:ls)
+            ans[j++] = i;
+        return ans;
+    }
+    private List<Integer> getDigits(int a){
+        List<Integer> ans = new ArrayList<>();
+        while(a != 0){
+            ans.add(a % 10);
+            a = a/10;
+        }
+        Collections.reverse(ans);
+        return ans;
+    }
+}
